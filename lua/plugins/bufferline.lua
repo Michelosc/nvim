@@ -2,12 +2,12 @@ return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
   opts = {
-
     options = {
       close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
       offsets = { { filetype = "neo-tree", text = "", padding = 1 } },
       separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
+      always_show_bufferline = true,
     },
 
     highlights = {
