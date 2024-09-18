@@ -17,15 +17,15 @@ if not status then
 end
 
 -- Determine OS
-local home = os.getenv("HOME")
-if vim.fn.has("mac") == 1 then
+local home = os.getenv "HOME"
+if vim.fn.has "mac" == 1 then
   WORKSPACE_PATH = home .. "/workspace/"
   CONFIG = "mac"
-elseif vim.fn.has("unix") == 1 then
+elseif vim.fn.has "unix" == 1 then
   WORKSPACE_PATH = home .. "/workspace/"
   CONFIG = "linux"
 else
-  print("Unsupported system")
+  print "Unsupported system"
 end
 
 -- Find root of project
@@ -104,7 +104,7 @@ local config = {
     workspace_dir,
   },
 
-  -- on_attach = require("user.lsp.handlers").on_attach,
+  on_attach = require("user.lsp.handlers").on_attach,
   capabilities = capabilities,
 
   -- 💀
@@ -127,16 +127,6 @@ local config = {
         downloadSources = true,
       },
       configuration = {
-        runtimes = {
-          -- {
-          --   name = "JavaSE-8",
-          --   path = "~/.sdkman/candidates/java/8.0.422-amzn/",
-          -- },
-          {
-            name = "JavaSE-11",
-            path = "~/.sdkman/candidates/java/11.0.24-amzn/",
-          },
-        },
         updateBuildConfiguration = "interactive",
       },
       maven = {
@@ -215,13 +205,10 @@ jdtls.start_or_attach(config)
 -- require('jdtls').setup_dap()
 require("jdtls").setup_dap({ hotcodereplace = "auto" })
 
-vim.cmd(
-  "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
-)
-vim.cmd(
-  "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
-)
-vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
+vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
 -- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
-vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
+vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+
