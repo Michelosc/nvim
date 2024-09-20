@@ -6,7 +6,7 @@ return {
   desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 
   dependencies = {
-    "rcarriga/nvim-dap-ui",
+    { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
     -- virtual text for the debugger
     {
       "theHamsta/nvim-dap-virtual-text",
@@ -44,6 +44,9 @@ return {
 
     vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
+    local dap = require('dap')
+    -- local dapui = require('dap-ui')
+
     -- dap.listeners.after.event_initialized["dapui_config"] = function()
     --   dapui.open()
     -- end
@@ -55,7 +58,7 @@ return {
     -- dap.listeners.before.event_exited["dapui_config"] = function()
     --   dapui.close()
     -- end
-    local dap = require('dap')
+
 
     dap.configurations.java = {
       {

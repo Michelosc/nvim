@@ -31,6 +31,7 @@ return {
         "bashls",
         "cssls",
         "html",
+        "ts_ls",
         "gradle_ls",
         "groovyls",
         "lua_ls",
