@@ -34,6 +34,8 @@ return {
       "jsdoc",
       "json",
       "jsonc",
+      "php",
+      "vue",
       "lua",
       "luadoc",
       "luap",

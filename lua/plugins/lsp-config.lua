@@ -34,6 +34,8 @@ return {
         "ts_ls",
         "gradle_ls",
         "groovyls",
+        "intelephense",
+        "volar",
         "lua_ls",
         "jdtls",
         "jsonls",
