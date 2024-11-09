@@ -16,7 +16,8 @@ M.get_spring_boot_runner = function(profile, debug)
 end
 
 M.run_spring_boot = function(debug)
-  vim.cmd("term " .. M.get_spring_boot_runner("local", debug))
+  -- vim.cmd("term " .. M.get_spring_boot_runner("local", debug))
+  vim.cmd("term " .. M.get_spring_boot_runner("dev", debug))
 end
 
 return M

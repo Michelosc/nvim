@@ -38,6 +38,11 @@ end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+local lsp_attach = function(client, bufnr)
+  -- Create your keybindings here...
+  require("config.keymaps").lsp_keymaps(bufnr)
+end
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
@@ -112,7 +117,7 @@ local config = {
     workspace_dir,
   },
 
-  -- on_attach = require("user.lsp.handlers").on_attach,
+  on_attach = lsp_attach,
   capabilities = capabilities,
 
   -- 💀
@@ -142,7 +147,11 @@ local config = {
           -- },
           {
             name = "JavaSE-11",
-            path = "~/.sdkman/candidates/java/11.0.24-amzn/",
+            path = "~/.sdkman/candidates/java/11.0.25-amzn/",
+          },
+          {
+            name = "JavaSE-21",
+            path = "~/.sdkman/candidates/java/21.0.5-amzn/",
           },
         },
         updateBuildConfiguration = "interactive",
